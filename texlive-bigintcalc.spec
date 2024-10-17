@@ -3,7 +3,7 @@ Version:	53172
 Release:	2
 Summary:	Integer calculations on very large numbers
 Group:		Publishing
-URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/bigintcalc
+URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/bigintcalc
 License:	lppl1.3
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/bigintcalc.r%{version}.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/bigintcalc.doc.r%{version}.tar.xz
