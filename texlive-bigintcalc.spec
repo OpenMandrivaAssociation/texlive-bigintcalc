@@ -1,39 +1,24 @@
-Name:		texlive-bigintcalc
-Version:	53172
-Release:	2
+%global tl_name bigintcalc
+%global tl_revision 79461
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	1.5
+Release:	%{tl_revision}.1
 Summary:	Integer calculations on very large numbers
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/bigintcalc
 License:	lppl1.3
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/bigintcalc.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/bigintcalc.doc.r%{version}.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/bigintcalc.source.r%{version}.tar.xz
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/bigintcalc.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/bigintcalc.doc.r%{tl_revision}.tar.xz
+Source2:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/bigintcalc.source.r%{tl_revision}.tar.xz
 BuildArch:	noarch
+BuildSystem:	texlive
 BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+%texlive_base_requires
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-This package provides expandable arithmetic operations with big
-integers that can exceed TeX's number limits.
+This package provides expandable arithmetic operations with big integers
+that can exceed TeX's number limits.
 
-%prep
-%setup -c -a1 -a2
-%autopatch -p1
-
-%build
-
-%install
-rm -rf tlpkg
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -a * %{buildroot}%{_texmfdistdir}
-
-%files
-%doc %{_texmfdistdir}/source/latex/bigintcalc
-%{_texmfdistdir}/tex/generic/bigintcalc
-%doc %{_texmfdistdir}/doc/latex/bigintcalc
-
-%post -p %{_sbindir}/texlive.post
-
-%postun
-[ "$1" -eq 0 ] && %{_sbindir}/texlive.post
